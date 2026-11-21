@@ -2,7 +2,7 @@
 
 This guide is for contributors who add or change Arabyo's learning content (levels, words, images and sounds). The curriculum itself is described in [curriculum.md](curriculum.md).
 
-All content lives in the `content/` folder as plain JSON files, saved as UTF-8 (no BOM). The code never contains curriculum content: it only reads the files in `content/`, so changing the curriculum never needs a code change.
+All content lives in the `content/` folder: plain JSON files saved as UTF-8 (no BOM), plus each level's image and audio files. The code never contains curriculum content: it only reads the files in `content/`, so changing the curriculum never needs a code change.
 
 ## Layout
 
@@ -11,10 +11,10 @@ content/
   levels.json          list of all levels, in order
   level-0/
     level.json         the level file for level 0
-    images/            image files for level 0 (added in a later step)
+    images/            image files for level 0
     audio/
-      ar/              Arabic recordings (added in a later step)
-      sv/              Swedish recordings (added in a later step)
+      ar/              Arabic recordings
+      sv/              Swedish recordings
   level-1/
     ...
 ```
@@ -88,17 +88,24 @@ Each item in `items` has these fields:
 - Images are open-licensed only. OpenMoji (CC BY-SA 4.0) is the main source, and each item records its OpenMoji hexcode in `openmoji`.
 - A word with no suitable open-licensed image is removed from the content. It is never given a wrong or misleading picture.
 
+## Audio
+
+- Audio files are ready-made MP3 files made with ElevenLabs, using one fixed Arabic voice and one fixed Swedish voice. They are made once, before they enter the project.
+- The app itself never contacts ElevenLabs, any AI service or any service outside the device. It only plays the MP3 files in the level folder.
+- Arabic audio (`audio/ar/<id>.mp3`) says the word in its pausal spoken form, the way it sounds alone. Swedish audio (`audio/sv/<id>.mp3`) says the Swedish meaning.
+- A sound's pronunciation is checked before the file is added.
+
 ## Content versions
 
-Whenever a level's content changes (items, text, images or audio), bump that level's `contentVersion` by 1, in both `levels.json` and the level file, and keep the two equal. Installed devices use this number to know that a level must be downloaded again.
+Whenever any file of a level changes (its level file, an image or a sound), bump that level's `contentVersion` by 1, in both `levels.json` and the level file, and keep the two equal. Installed devices use this number to know they must download the level's new content.
 
 ## Credits
 
-Every image and sound must be listed in [CREDITS.md](../CREDITS.md) with its source and licence before it is added.
+Every new image or sound must be listed in [CREDITS.md](../CREDITS.md) with its source and licence before it is published (before it is added to the project or pushed).
 
-## Images and audio come later
+## Images and audio files
 
-The level files already reference their image and audio files, but those files are added in later steps. Until then the referenced paths do not exist yet.
+For level 0, all 20 items now have their image at `content/level-0/images/<id>.svg`, their Arabic audio at `content/level-0/audio/ar/<id>.mp3` and their Swedish audio at `content/level-0/audio/sv/<id>.mp3`, at the paths given in the level file.
 
 ## Licence
 
