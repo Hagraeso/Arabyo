@@ -1,0 +1,10 @@
+{
+  "levels": [
+    {
+      "level": 0,
+      "folder": "level-0",
+      "file": "level.json",
+      "contentVersion": 1
+    }
+  ]
+}

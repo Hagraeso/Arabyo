@@ -12,7 +12,7 @@ The curriculum is in [docs/curriculum.md](docs/curriculum.md) and is owned by th
 
 ## Status
 
-Step 1: an empty app shell that installs and works offline. No games or content yet.
+Step 3: the content file format (see [docs/content-format.md](docs/content-format.md)) and a 20-word level 0 trial exist. No games yet.
 
 ## Run locally
 

@@ -1,0 +1,279 @@
+{
+  "level": 0,
+  "contentVersion": 1,
+  "items": [
+    {
+      "id": "cat",
+      "word": "قِطَّةٌ",
+      "syllables": [
+        "قِطْ",
+        "طَهْ"
+      ],
+      "category": "animals",
+      "sv": "katt",
+      "openmoji": "1F408",
+      "image": "images/cat.svg",
+      "audioAr": "audio/ar/cat.mp3",
+      "audioSv": "audio/sv/cat.mp3"
+    },
+    {
+      "id": "dog",
+      "word": "كَلْبٌ",
+      "syllables": [
+        "كَلْبْ"
+      ],
+      "category": "animals",
+      "sv": "hund",
+      "openmoji": "1F415",
+      "image": "images/dog.svg",
+      "audioAr": "audio/ar/dog.mp3",
+      "audioSv": "audio/sv/dog.mp3"
+    },
+    {
+      "id": "lion",
+      "word": "أَسَدٌ",
+      "syllables": [
+        "أَ",
+        "سَدْ"
+      ],
+      "category": "animals",
+      "sv": "lejon",
+      "openmoji": "1F981",
+      "image": "images/lion.svg",
+      "audioAr": "audio/ar/lion.mp3",
+      "audioSv": "audio/sv/lion.mp3"
+    },
+    {
+      "id": "elephant",
+      "word": "فِيلٌ",
+      "syllables": [
+        "فِيلْ"
+      ],
+      "category": "animals",
+      "sv": "elefant",
+      "openmoji": "1F418",
+      "image": "images/elephant.svg",
+      "audioAr": "audio/ar/elephant.mp3",
+      "audioSv": "audio/sv/elephant.mp3"
+    },
+    {
+      "id": "fish",
+      "word": "سَمَكَةٌ",
+      "syllables": [
+        "سَ",
+        "مَ",
+        "كَهْ"
+      ],
+      "category": "animals",
+      "sv": "fisk",
+      "openmoji": "1F41F",
+      "image": "images/fish.svg",
+      "audioAr": "audio/ar/fish.mp3",
+      "audioSv": "audio/sv/fish.mp3"
+    },
+    {
+      "id": "duck",
+      "word": "بَطَّةٌ",
+      "syllables": [
+        "بَطْ",
+        "طَهْ"
+      ],
+      "category": "animals",
+      "sv": "anka",
+      "openmoji": "1F986",
+      "image": "images/duck.svg",
+      "audioAr": "audio/ar/duck.mp3",
+      "audioSv": "audio/sv/duck.mp3"
+    },
+    {
+      "id": "apple",
+      "word": "تُفَّاحَةٌ",
+      "syllables": [
+        "تُفْ",
+        "فَا",
+        "حَهْ"
+      ],
+      "category": "food",
+      "sv": "äpple",
+      "openmoji": "1F34E",
+      "image": "images/apple.svg",
+      "audioAr": "audio/ar/apple.mp3",
+      "audioSv": "audio/sv/apple.mp3"
+    },
+    {
+      "id": "banana",
+      "word": "مَوْزَةٌ",
+      "syllables": [
+        "مَوْ",
+        "زَهْ"
+      ],
+      "category": "food",
+      "sv": "banan",
+      "openmoji": "1F34C",
+      "image": "images/banana.svg",
+      "audioAr": "audio/ar/banana.mp3",
+      "audioSv": "audio/sv/banana.mp3"
+    },
+    {
+      "id": "milk",
+      "word": "حَلِيبٌ",
+      "syllables": [
+        "حَ",
+        "لِيبْ"
+      ],
+      "category": "food",
+      "sv": "mjölk",
+      "openmoji": "1F95B",
+      "image": "images/milk.svg",
+      "audioAr": "audio/ar/milk.mp3",
+      "audioSv": "audio/sv/milk.mp3"
+    },
+    {
+      "id": "bread",
+      "word": "خُبْزٌ",
+      "syllables": [
+        "خُبْزْ"
+      ],
+      "category": "food",
+      "sv": "bröd",
+      "openmoji": "1F35E",
+      "image": "images/bread.svg",
+      "audioAr": "audio/ar/bread.mp3",
+      "audioSv": "audio/sv/bread.mp3"
+    },
+    {
+      "id": "egg",
+      "word": "بَيْضَةٌ",
+      "syllables": [
+        "بَيْ",
+        "ضَهْ"
+      ],
+      "category": "food",
+      "sv": "ägg",
+      "openmoji": "1F95A",
+      "image": "images/egg.svg",
+      "audioAr": "audio/ar/egg.mp3",
+      "audioSv": "audio/sv/egg.mp3"
+    },
+    {
+      "id": "house",
+      "word": "بَيْتٌ",
+      "syllables": [
+        "بَيْتْ"
+      ],
+      "category": "home",
+      "sv": "hus",
+      "openmoji": "1F3E0",
+      "image": "images/house.svg",
+      "audioAr": "audio/ar/house.mp3",
+      "audioSv": "audio/sv/house.mp3"
+    },
+    {
+      "id": "door",
+      "word": "بَابٌ",
+      "syllables": [
+        "بَابْ"
+      ],
+      "category": "home",
+      "sv": "dörr",
+      "openmoji": "1F6AA",
+      "image": "images/door.svg",
+      "audioAr": "audio/ar/door.mp3",
+      "audioSv": "audio/sv/door.mp3"
+    },
+    {
+      "id": "bed",
+      "word": "سَرِيرٌ",
+      "syllables": [
+        "سَ",
+        "رِيرْ"
+      ],
+      "category": "home",
+      "sv": "säng",
+      "openmoji": "1F6CF",
+      "image": "images/bed.svg",
+      "audioAr": "audio/ar/bed.mp3",
+      "audioSv": "audio/sv/bed.mp3"
+    },
+    {
+      "id": "chair",
+      "word": "كُرْسِيٌّ",
+      "syllables": [
+        "كُرْ",
+        "سِيّ"
+      ],
+      "category": "home",
+      "sv": "stol",
+      "openmoji": "1FA91",
+      "image": "images/chair.svg",
+      "audioAr": "audio/ar/chair.mp3",
+      "audioSv": "audio/sv/chair.mp3"
+    },
+    {
+      "id": "hand",
+      "word": "يَدٌ",
+      "syllables": [
+        "يَدْ"
+      ],
+      "category": "body",
+      "sv": "hand",
+      "openmoji": "270B",
+      "image": "images/hand.svg",
+      "audioAr": "audio/ar/hand.mp3",
+      "audioSv": "audio/sv/hand.mp3"
+    },
+    {
+      "id": "eye",
+      "word": "عَيْنٌ",
+      "syllables": [
+        "عَيْنْ"
+      ],
+      "category": "body",
+      "sv": "öga",
+      "openmoji": "1F441",
+      "image": "images/eye.svg",
+      "audioAr": "audio/ar/eye.mp3",
+      "audioSv": "audio/sv/eye.mp3"
+    },
+    {
+      "id": "nose",
+      "word": "أَنْفٌ",
+      "syllables": [
+        "أَنْفْ"
+      ],
+      "category": "body",
+      "sv": "näsa",
+      "openmoji": "1F443",
+      "image": "images/nose.svg",
+      "audioAr": "audio/ar/nose.mp3",
+      "audioSv": "audio/sv/nose.mp3"
+    },
+    {
+      "id": "ear",
+      "word": "أُذُنٌ",
+      "syllables": [
+        "أُ",
+        "ذُنْ"
+      ],
+      "category": "body",
+      "sv": "öra",
+      "openmoji": "1F442",
+      "image": "images/ear.svg",
+      "audioAr": "audio/ar/ear.mp3",
+      "audioSv": "audio/sv/ear.mp3"
+    },
+    {
+      "id": "mouth",
+      "word": "فَمٌ",
+      "syllables": [
+        "فَمْ"
+      ],
+      "category": "body",
+      "sv": "mun",
+      "openmoji": "1F444",
+      "image": "images/mouth.svg",
+      "audioAr": "audio/ar/mouth.mp3",
+      "audioSv": "audio/sv/mouth.mp3"
+    }
+  ]
+}
