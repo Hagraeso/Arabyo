@@ -1,13 +1,16 @@
-// Arabyo service worker: keeps the app shell available offline.
+// Arabyo service worker.
 //
-// IMPORTANT: bump CACHE (e.g. 'arabyo-shell-v2') whenever any file in SHELL
-// changes, so devices download the new version and drop the old one.
+// Shell cache: the app shell (SHELL below) lives in 'arabyo-shell-vN'.
+// IMPORTANT: bump SHELL_CACHE whenever any file in SHELL changes, so devices
+// download the new version and drop the old shell cache.
 //
-// Later steps will add separate per-level content caches (for example
-// 'arabyo-level-0-v1'). Those must be kept by the activate handler below,
-// which currently deletes every cache that is not the current shell cache.
+// Content caches: the app (not this service worker) stores each level's files
+// in caches named 'arabyo-content-level-<n>-v<contentVersion>'. This service
+// worker never deletes any cache whose name starts with 'arabyo-content-'; it
+// only serves level files from those caches when they are there.
 
-const CACHE = 'arabyo-shell-v1';
+const SHELL_CACHE = 'arabyo-shell-v2';
+const CONTENT_PREFIX = 'arabyo-content-';
 
 // Every file the empty app needs to start. All paths are relative to this
 // file, so the app works at a domain root or inside a subfolder.
@@ -27,20 +30,23 @@ const SHELL = [
 // Install: download and store the whole shell, then activate right away.
 self.addEventListener('install', function (event) {
   event.waitUntil(
-    caches.open(CACHE)
+    caches.open(SHELL_CACHE)
       .then(function (cache) { return cache.addAll(SHELL); })
       .then(function () { return self.skipWaiting(); })
   );
 });
 
-// Activate: remove old shell caches, then take control of open pages.
+// Activate: remove old shell caches (never content caches), then take
+// control of open pages.
 self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys()
       .then(function (names) {
         return Promise.all(
           names
-            .filter(function (name) { return name !== CACHE; })
+            .filter(function (name) {
+              return name !== SHELL_CACHE && name.indexOf(CONTENT_PREFIX) !== 0;
+            })
             .map(function (name) { return caches.delete(name); })
         );
       })
@@ -48,12 +54,58 @@ self.addEventListener('activate', function (event) {
   );
 });
 
-// Fetch: cache-first for same-origin GET requests.
+// The path of url relative to this service worker's scope (for example
+// 'content/levels.json'), or null if url is outside the scope.
+function scopePath(url) {
+  const base = new URL(self.registration.scope).pathname;
+  return url.pathname.indexOf(base) === 0 ? url.pathname.slice(base.length) : null;
+}
+
 self.addEventListener('fetch', function (event) {
   const req = event.request;
   if (req.method !== 'GET') return;
-  if (new URL(req.url).origin !== self.location.origin) return;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
 
+  const rel = scopePath(url);
+
+  // Level files: from any cache if stored, otherwise from the network.
+  // Nothing is stored here; the app fills the content caches itself.
+  if (rel !== null && /^content\/level-\d+\//.test(rel)) {
+    event.respondWith(
+      caches.match(req, { ignoreSearch: true }).then(function (cached) {
+        return cached || fetch(req);
+      })
+    );
+    return;
+  }
+
+  // Level list: network-first, keeping a copy for offline use.
+  if (rel === 'content/levels.json') {
+    event.respondWith(
+      fetch(req)
+        .then(function (res) {
+          if (res && res.ok) {
+            const copy = res.clone();
+            event.waitUntil(
+              caches.open(SHELL_CACHE).then(function (cache) {
+                return cache.put(req, copy);
+              })
+            );
+          }
+          return res;
+        })
+        .catch(function (err) {
+          return caches.match(req, { ignoreSearch: true }).then(function (cached) {
+            if (cached) return cached;
+            throw err;
+          });
+        })
+    );
+    return;
+  }
+
+  // Everything else: cache-first.
   event.respondWith(
     caches.match(req, { ignoreSearch: true }).then(function (cached) {
       if (cached) return cached;
